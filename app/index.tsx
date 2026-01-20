@@ -1,15 +1,18 @@
-import { Text, View } from "react-native";
+import CategoriesScreen from "@/screens/CategoriesScreen";
+import MealsOverviewScreen from "@/screens/MealsOverviewScreen";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar } from "expo-status-bar";
+
+const Stack = createNativeStackNavigator();
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    <>
+      <StatusBar style="light" />
+        <Stack.Navigator initialRouteName="Categories">
+          <Stack.Screen name="Categories" component={CategoriesScreen} />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+        </Stack.Navigator>
+    </>
   );
 }
