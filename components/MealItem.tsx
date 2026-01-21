@@ -7,6 +7,7 @@ function MealItem({ meal }: { meal: Meal }) {
 
 const navigation = useNavigation<NavigationProp<any>>();
 
+
   return (
     <View style={styles.mealItem}>
       <Pressable android_ripple={{ color: '#ccc' }} style={({pressed}) => [styles.button, pressed && styles.buttonPressed]} 

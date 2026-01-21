@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import Meal from "../models/meal";
 
 export function MealDetails({meal}: {meal: Meal}) {
+
     return (
          <View style={styles.details}>
           <Text style={styles.detailItem}>{meal.duration}m</Text>

@@ -1,5 +1,6 @@
 import MealItem from "@/components/MealItem";
 import { MEALS, CATEGORIES as categories } from "@/dummy-data";
+import { useLayoutEffect } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
 function MealsOverviewScreen({route, navigation}: {route: any, navigation: any}) {
@@ -8,10 +9,11 @@ function MealsOverviewScreen({route, navigation}: {route: any, navigation: any})
   const category = categories.find((category) => category.id === categoryId);
 
 const categoryTitle = category?.title;
-
-navigation.setOptions({
-  title: categoryTitle,
-});
+useLayoutEffect(() => {
+  navigation.setOptions({
+    title: categoryTitle,
+  });
+}, [navigation, categoryTitle]);
 
   return (
     <View style={styles.container}>
