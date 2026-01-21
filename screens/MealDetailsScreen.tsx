@@ -9,15 +9,16 @@ export default function MealDetailsScreen({ route }: { route: any }) {
   return (
     <View>
       <Image source={{ uri: meal?.imageUrl }} style={styles.image} />
+      <Text style={styles.title}>{meal?.title}</Text>
       <MealDetails meal={meal as unknown as Meal} />
       <ScrollView>
-        <Text style={styles.title}>Ingredients:</Text>
+        <Text style={styles.subtitle}>Ingredients:</Text>
         {meal?.ingredients.map((ingredient) => (
           <Text style={styles.listItem} key={ingredient}>
             {ingredient}
           </Text>
         ))}
-        <Text style={styles.title}>Steps</Text>
+        <Text style={styles.subtitle}>Steps</Text>
         {meal?.steps.map((step) => (
           <Text style={styles.listItem} key={step}>
             {step}
@@ -63,5 +64,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginHorizontal: 12,
+    color: '#5e3e2a',
+    borderBottomColor: '#5e3e2a',
+    borderBottomWidth: 2,
+    padding: 6
   }
 });
