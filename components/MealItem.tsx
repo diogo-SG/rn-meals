@@ -1,20 +1,22 @@
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Image, Platform, Pressable, StyleSheet, Text, View } from "react-native";
 import Meal from "../models/meal";
+import { MealDetails } from "./MealDetails";
 
 function MealItem({ meal }: { meal: Meal }) {
+
+const navigation = useNavigation<NavigationProp<any>>();
+
   return (
     <View style={styles.mealItem}>
-      <Pressable android_ripple={{ color: '#ccc' }} style={({pressed}) => [styles.button, pressed && styles.buttonPressed]} onPress={() => {}}>
+      <Pressable android_ripple={{ color: '#ccc' }} style={({pressed}) => [styles.button, pressed && styles.buttonPressed]} 
+      onPress={() => navigation.navigate('MealDetails', { mealId: meal.id })}>
         <View>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>{meal.title}</Text>
         <Image source={{ uri: meal.imageUrl }} style={styles.image} />
         </View>
-        <View style={styles.details}>
-          <Text style={styles.detailItem}>{meal.duration}m</Text>
-          <Text style={styles.detailItem}>{meal.complexity.toUpperCase()}</Text>
-          <Text style={styles.detailItem}>{meal.affordability.toUpperCase()}</Text>
-        </View>
+        <MealDetails meal={meal} /> 
         </View>
       </Pressable>
     </View> 
@@ -52,16 +54,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     margin: 8,
-  },
-  details: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 8,
-  },
-  detailItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
   button: {
     flex: 1,

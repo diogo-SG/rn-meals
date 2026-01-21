@@ -1,4 +1,5 @@
 import CategoriesScreen from "@/screens/CategoriesScreen";
+import MealDetailsScreen from "@/screens/MealDetailsScreen";
 import MealsOverviewScreen from "@/screens/MealsOverviewScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
@@ -23,6 +24,7 @@ export default function Index() {
           <Stack.Screen name="MealsOverview" 
           //options={({ route, navigation }) => ({ title: (route.params as { categoryId: string })?.categoryId })} 
           component={MealsOverviewScreen} />
+          <Stack.Screen name="MealDetails" options={{ title: 'Meal Details' }} component={MealDetailsScreen} /> 
         </Stack.Navigator>
     </>
   );
