@@ -1,3 +1,4 @@
+import { store } from "@/redux/store";
 import CategoriesScreen from "@/screens/CategoriesScreen";
 import FavouritesScreen from "@/screens/FavouritesScreen";
 import MealDetailsScreen from "@/screens/MealDetailsScreen";
@@ -6,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
+import { Provider } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -33,11 +35,13 @@ export default function Index() {
   return (
     <>
       <StatusBar style="light" />
+      <Provider store={store}>  
         <Stack.Navigator  screenOptions={{headerStyle}} initialRouteName="Categories">
           <Stack.Screen name="Categories" options={{ title: 'All Categories', headerShown: false }} component={DrawerNavigator} />
           <Stack.Screen name="MealsOverview" options={{ title: 'Meals Overview' }} component={MealsOverviewScreen} />
           <Stack.Screen name="MealDetails" options={{ title: 'Meal Details' }} component={MealDetailsScreen} /> 
         </Stack.Navigator>
+        </Provider>
     </>
   );
 }
